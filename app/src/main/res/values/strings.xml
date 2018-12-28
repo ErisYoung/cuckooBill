@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CuckooBill</string>
+    <string name="string_bill_chart">图表</string>
+    <string name="string_bill_main">账单</string>
+    <string name="string_bill_card">流水</string>
+    <string name="string_mine">我的</string>
+
+    <string name="eating">&#xf2e7; 吃喝</string>
+    <string name="play">&#xf11b; 娱乐</string>
+    <string name="shop">&#xf07a; 购物</string>
+    <string name="otherSpend">&#xf56b; 杂项</string>
+    <string name="salary">&#xf53c; 工资</string>
+    <string name="redMoney">&#xf5bc; 红包</string>
+    <string name="finance">&#xf53b; 理财</string>
+    <string name="otherIncome">&#xf786; 其他</string>
+
+    <string name="eating_mip">&#xf2e7;</string>
+    <string name="play_mip">&#xf11b;</string>
+    <string name="shop_mip">&#xf07a;</string>
+    <string name="otherSpend_mip">&#xf56b;</string>
+    <string name="salary_mip">&#xf53c;</string>
+    <string name="redMoney_mip">&#xf5bc;</string>
+    <string name="finance_mip">&#xf53b;</string>
+    <string name="otherIncome_mip">&#xf786;</string>
+</resources>

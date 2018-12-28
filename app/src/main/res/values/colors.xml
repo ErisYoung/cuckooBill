@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="test">#bb5a2c</color>
+    <color name="main_button_color">#e05440</color>
+    <color name="main_content_color">#8a8a8a</color>
+    <color name="main_background_bluelike">#070d59</color>
+    <color name="colorGrey">#f9f9f9</color>
+    <color name="white">#ffffff</color>
+    <color name="littlewhiteback">#efeded</color>
+    <color name="deepgrey">#686666</color>
+    <color name="black">#000000</color>
+    <color name="pink">#f18fac</color>
+    <color name="littlepink">#ffc0c2</color>
+    <color name="violet">#a26ea1</color>
+    <color name="toolbar">#303f9f</color>
+
+    <color name="mainBlack">#ffffff</color>
+    <color name="contentItemBlue">#ffffff</color>
+    <color name="titleItemGrey">#f8f8f8</color>
+    <color name="selectedRed">#e20224</color>
+    <color name="selectedRedPress">#b4031e</color>
+
+    <color name="buttonBlue">#5893d4</color>
+    <color name="underlinegrey">#cbcbcb</color>
+    <color name="press">#8fbbaf</color>
+    <color name="pressDefault">#acdeaa</color>
+
+    <color name="loginBack">#3f51b5</color>
+</resources>

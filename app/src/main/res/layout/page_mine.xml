@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/h_back"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <ImageView
+            android:id="@+id/h_head"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/h_back"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/user_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_vertical|center"
+                android:layout_marginRight="20dp"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                android:text="欢迎来到Cuckoo的第290天"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="200dp">
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/bill_noting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="记账提醒"
+            fancy:fb_borderColor="@color/black"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="@color/main_background_bluelike"
+            fancy:fb_fontIconResource="&#xf017;"
+            fancy:fb_iconPosition="left"
+            fancy:fb_textColor="@color/white"
+            fancy:fb_fontIconSize="20dp"
+            fancy:fb_textSize="18dp" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/bill_budget"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="预算设置"
+            android:textColor="@color/black"
+            fancy:fb_defaultColor="@color/main_background_bluelike"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_fontIconResource="&#xf005;"
+            fancy:fb_iconPosition="left"
+            fancy:fb_textSize="18dp"
+            fancy:fb_fontIconSize="20dp"
+            fancy:fb_textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/sign_out"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Sign out"
+        fancy:fb_defaultColor="@color/selectedRed"
+        fancy:fb_focusColor="@color/selectedRedPress"
+        fancy:fb_iconPosition="left"
+        fancy:fb_textSize="20dp"
+        fancy:fb_radius="100dp"
+        fancy:fb_fontIconSize="20dp"
+        fancy:fb_textColor="#FFFFFF" />
+
+
+</RelativeLayout>

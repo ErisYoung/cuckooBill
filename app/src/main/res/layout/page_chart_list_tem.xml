@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView android:id="@+id/page_chart_list_mip"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:textSize="20sp"
+        android:gravity="center_vertical|center"
+        android:text="aaa"/>
+
+ <LinearLayout android:id="@+id/page_chart_list_content"
+     android:layout_height="match_parent"
+     android:layout_width="0dp"
+     android:layout_weight="9"
+     android:orientation="vertical"
+     >
+     <LinearLayout android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:orientation="horizontal"
+         android:layout_marginLeft="5dp"
+         >
+         <TextView android:id="@+id/moneyType"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:gravity="bottom"
+             android:text="吃喝"/>
+         <TextView android:id="@+id/itemCount"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:gravity="bottom"
+             android:layout_weight="1"
+             android:text="34笔"/>
+         <TextView android:id="@+id/moneyPercent"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:gravity="bottom"
+             android:text="34.84%"
+             android:layout_weight="3"/>
+
+     </LinearLayout>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:orientation="horizontal"
+         android:layout_marginLeft="5dp">
+         <TextView
+             android:id="@+id/moneyChangeBar"
+             android:layout_height="10dp"
+             android:layout_width="20dp"
+             android:layout_gravity="center_vertical"
+             android:background="@drawable/round_corner_ract"
+             />
+
+     </LinearLayout>
+
+
+ </LinearLayout>
+
+    <TextView android:id="@+id/page_chart_list_moneyAll"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:gravity="center_vertical|right"
+        android:text="451.23"
+        />
+
+</LinearLayout>

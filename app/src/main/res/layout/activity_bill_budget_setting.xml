@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootView"
+    tools:context=".BillBudgetSetting">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/toolbar">
+        <TextView android:id="@+id/cancle_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center"
+            android:clickable="true"
+            style="@style/toolbar"
+            android:textSize="24sp"
+            android:text="&#xf104;"/>
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:text="预算设置"
+            style="@style/toolbar"
+            android:gravity="center|center_vertical"/>
+        <TextView
+            android:id="@+id/deter"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            style="@style/toolbar"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center"
+            android:textSize="20sp"
+            android:clickable="true"
+            android:text="&#xf00c;"
+            />
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/littlewhiteback"
+        >
+        <TextView android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:text="开启预算"
+            android:gravity="center_vertical|left"/>
+        <com.suke.widget.SwitchButton
+            android:id="@+id/switch_button"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/inner_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="8dp"
+            android:textSize="12sp"
+            android:gravity="center_vertical"
+            android:text="*开启预算后，首页将显示当月预算结余"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:background="@color/littlewhiteback">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="预算金额" />
+            <EditText
+                android:id="@+id/budget_acount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="top"
+                android:paddingRight="15dp"
+                android:textSize="14sp"
+                android:hint="10000"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginRight="10dp"
+                android:text="&#xf105;"/>
+
+
+        </LinearLayout>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="8dp"
+            android:textSize="12sp"
+            android:gravity="center_vertical"
+            android:text="*预算余额为预算金额减去当月支出"/>
+    </LinearLayout>
+</LinearLayout>

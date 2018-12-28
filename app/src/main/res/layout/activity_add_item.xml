@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootView"
+    tools:context=".AddItemActivity">
+
+    <LinearLayout
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/underline"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancle_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:text="取消"
+            android:textSize="20sp"/>
+
+        <RadioGroup
+            android:id="@+id/radiogroup_types_payments"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/spending"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center_vertical|center"
+                android:layout_gravity="center|center_vertical"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:background="@drawable/radio_button"
+                android:textColor="@drawable/radio_button_color"
+                android:text="支出" />
+
+            <RadioButton
+                android:id="@+id/incoming"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center"
+                android:button="@null"
+                android:background="@drawable/radio_button"
+                android:textColor="@drawable/radio_button_color"
+                android:layout_gravity="center|center_vertical"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:text="收入" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/save_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp"
+            android:text="保存"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_price_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bill_type_selected"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:clickable="true"
+            android:textSize="20sp"
+            android:text="&#xf2e7; 吃喝"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            />
+
+        <EditText
+            android:id="@+id/bill_amount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@null"
+            android:clickable="true"
+            android:textSize="29sp"
+            android:textColor="@color/selectedRed"
+            android:textStyle="bold"
+            android:gravity="center_vertical|center"
+            android:text="0.0"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/money_type_frame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/all_type_income"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RadioGroup
+                android:id="@+id/radiogroup_types_money_income"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/income_salary"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf53c; 工资" />
+
+                <RadioButton
+                    android:id="@+id/income_red_packet"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf5bc; 红包" />
+
+                <RadioButton
+                    android:id="@+id/income_financial"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf53b; 理财" />
+
+                <RadioButton
+                    android:id="@+id/income_other"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf786; 其他" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/all_type_spend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radiogroup_types_money_spend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/spending_eating"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf2e7; 吃喝" />
+
+                <RadioButton
+                    android:id="@+id/spending_shopping"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf07a; 购物" />
+
+                <RadioButton
+                    android:id="@+id/spending_playing"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                    android:text="&#xf11b; 娱乐" />
+
+                <RadioButton
+                    android:id="@+id/spending_clutter"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:button="@null"
+                    android:textSize="20sp"
+                    android:textColor="@drawable/money_type_button"
+                        android:text="&#xf56b; 杂项" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bill_note"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bill_date"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|center"
+            android:background="@drawable/border"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:text="12月9日" />
+
+        <EditText
+            android:id="@+id/bill_note_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:hint="说点什么吧~" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
+    <LinearLayout
+        android:id="@+id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+
+        android:background="#F0F1EE"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/input_number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_1"
+                    style="@style/keyboard_style"
+                    android:text="1" />
+
+                <Button
+                    android:id="@+id/button_2"
+                    style="@style/keyboard_style"
+                    android:text="2" />
+
+                <Button
+                    android:id="@+id/button_3"
+                    style="@style/keyboard_style"
+                    android:text="3" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button_4"
+                    style="@style/keyboard_style"
+                    android:text="4" />
+
+                <Button
+                    android:id="@+id/button_5"
+                    style="@style/keyboard_style"
+                    android:text="5" />
+
+                <Button
+                    android:id="@+id/button_6"
+                    style="@style/keyboard_style"
+                    android:text="6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button_7"
+                    style="@style/keyboard_style"
+                    android:text="7" />
+
+                <Button
+                    android:id="@+id/button_8"
+                    style="@style/keyboard_style"
+                    android:text="8" />
+
+                <Button
+                    android:id="@+id/button_9"
+                    style="@style/keyboard_style"
+                    android:text="9" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button_dot"
+                    style="@style/keyboard_style"
+                    android:text="." />
+
+                <Button
+                    android:id="@+id/button_0"
+                    style="@style/keyboard_style"
+                    android:layout_weight="2"
+                    android:text="0" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/input_operation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/button_del"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="&#xf55a;" />
+
+            <Button
+                android:id="@+id/button_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/main_button_color"
+                android:textSize="20sp"
+                android:text="确定" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

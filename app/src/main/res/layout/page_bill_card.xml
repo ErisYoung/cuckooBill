@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/rootView">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:fillViewport="true"
+        android:orientation="vertical">
+        <TextView android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center"
+            android:text="账单图例流水"
+            android:textSize="20sp">
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/underlinegrey"
+            />
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:id="@+id/page_card_selector"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center"
+                    android:text="选择时间"
+                    fancy:fb_borderColor="@color/white"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_focusColor="@color/press"
+                    fancy:fb_defaultColor="@color/pressDefault"
+                    fancy:fb_fontIconResource="&#xf073;"
+                    fancy:fb_iconPosition="left"
+                    fancy:fb_textColor="@color/white"
+                    fancy:fb_fontIconSize="15dp"
+                    fancy:fb_radius="20dp"
+                    fancy:fb_textSize="15dp" />
+                <TextView
+                    android:id="@+id/page_card_current_time"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical|center"
+                    android:text="2018年12月"
+                    />
+
+                <View android:layout_height="30dp"
+                    android:layout_width="1dp"
+                    android:layout_gravity="center"
+                    android:background="@color/underlinegrey"/>
+
+                <TextView
+                    android:id="@+id/page_card_current_payment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="10dp"
+                    android:text="支出"/>
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:id="@+id/page_card_change_payment"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical|center"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/press_state"
+                    android:text="切换收支"
+                    fancy:fb_borderColor="@color/white"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_focusColor="@color/press"
+                    fancy:fb_defaultColor="@color/pressDefault"
+                    fancy:fb_fontIconResource="&#xf362; "
+                    fancy:fb_iconPosition="left"
+                    fancy:fb_textColor="@color/white"
+                    fancy:fb_fontIconSize="15dp"
+                    fancy:fb_radius="20dp"
+                    fancy:fb_textSize="15dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/mPieChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/page_card_listName"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="left|center_vertical"
+                    android:background="@color/colorGrey"
+                    android:text="排行榜"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/page_card_listView"
+                    android:layout_weight="4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

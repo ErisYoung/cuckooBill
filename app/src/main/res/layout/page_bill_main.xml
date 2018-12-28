@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/rootView"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/mainPage_toolbar"
+        style="@style/page_content_horizontal"
+        android:layout_weight="1">
+
+        <TextView android:id="@+id/mainPage_user"
+            style="@style/toolbar_controls_item"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:text="&#xf007;"/>
+        <!--空白-->
+        <TextView style="@style/toolbar_controls_item"
+            android:layout_weight="5"/>
+        <TextView android:id="@+id/mainPage_calendar"
+            style="@style/toolbar_controls_item"
+            android:layout_weight="1"
+            android:textSize="19sp"
+            android:text="&#xf073;"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/page_content_horizontal"
+        android:background="@color/main_background_bluelike"
+        android:layout_weight="1.9">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="top">
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:textColor="@color/smssdk_white"
+                android:textStyle="bold"
+                android:text="-252.70"
+                android:textSize="32sp" />
+            <TextView
+                android:id="@+id/balance_month"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:textColor="@color/smssdk_white"
+                android:layout_marginTop="45dp"
+                android:textSize="16sp"
+                android:text="12月结余"/>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/page_content_horizontal"
+        android:background="@color/main_background_bluelike"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/spend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:textColor="@color/smssdk_white"
+                android:textStyle="bold"
+                android:text="-252.70"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/spend_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                style="@style/text_item_payments"
+                android:text="12月支出"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+        <TextView android:layout_width="0dp"
+            android:layout_weight="0.01"
+            android:layout_height="30dp"
+            android:background="#747583"
+            android:text="11"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:textColor="@color/smssdk_white"
+                android:textStyle="bold"
+                android:text="-252.70"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/income_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                style="@style/text_item_payments"
+                android:text="12月支出"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/page_content_horizontal"
+        android:layout_weight="8">
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/stickyListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

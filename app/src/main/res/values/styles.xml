@@ -1,0 +1,58 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="keyboard_style">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center|center</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="toolbar_controls_item">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center|center</item>
+        <item name="android:background">@color/main_background_bluelike</item>
+        <item name="android:textColor">@color/smssdk_white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="toolbar_controls_item_main">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center|center</item>
+        <item name="android:background">@color/main_background_bluelike</item>
+        <item name="android:textColor">@color/smssdk_white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="page_content_horizontal">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center|center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="text_item_payments">
+        <item name="android:textColor">@color/smssdk_white</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+
+    <style name="toolbar">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/littlewhiteback</item>
+    </style>
+    <style name="main_nav_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">3dp</item>
+        <item name="android:layout_gravity">bottom|center</item>
+        <item name="android:textColor">@drawable/text_color</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+</resources>

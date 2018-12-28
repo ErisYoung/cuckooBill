@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootView"
+    android:background="#f0f1f1"
+    tools:context=".ChangeItem">
+
+    <LinearLayout android:id="@+id/change_item_toolbar"
+        style="@style/page_content_horizontal"
+        android:layout_weight="1.5">
+        <TextView android:id="@+id/change_item_return"
+            style="@style/toolbar_controls_item"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:text="返回"/>
+        <TextView style="@style/toolbar_controls_item_main"
+            android:layout_weight="5"
+            android:text="详情"/>
+        <TextView android:id="@+id/change_item_delete"
+            style="@style/toolbar_controls_item"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:text="删除"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/white"
+        android:layout_margin="10dp">
+        <TextView android:id="@+id/bill_oitem_money_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical|center"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="吃喝"/>
+        <TextView
+            android:id="@+id/save_noteanddate"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:textSize="0.001sp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/save_id"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:textSize="0.001sp"
+            android:layout_height="match_parent"/>
+        <TextView android:id="@+id/bill_oitem_money_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:textColor="@color/main_background_bluelike"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="-15.00"
+
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/change_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/dash_border"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
+                android:text="时间" />
+
+            <TextView
+                android:id="@+id/change_item_time"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingRight="10dp"
+                android:textSize="20sp"
+                android:gravity="center|right"
+                android:text="2018-12-12" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
+                android:gravity="center|left"
+                android:text="备注" />
+            <TextView
+                android:id="@+id/change_item_note"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
+                android:gravity="center|right"
+                android:hint="说点什么吧.." />
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--blank-->
+    <TextView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addItem"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="16dp"
+        android:src="@mipmap/add_item_icon"
+        app:elevation="8dp"/>
+
+    <Button
+        android:id="@+id/edit_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:textColor="@color/selectedRed"
+        android:textSize="18sp"
+        android:background="@drawable/underline"
+        android:text="编辑"/>
+
+</LinearLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootView"
+    tools:context=".BillNoting">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/toolbar">
+        <TextView android:id="@+id/cancle_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center"
+            android:clickable="true"
+            style="@style/toolbar"
+            android:textSize="24sp"
+            android:text="&#xf104;"/>
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:text="记账设置"
+            style="@style/toolbar"
+            android:gravity="center|center_vertical"/>
+        <TextView
+            android:id="@+id/deter"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            style="@style/toolbar"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center"
+            android:textSize="20sp"
+            android:clickable="true"
+            android:text="&#xf00c;"
+         />
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/littlewhiteback"
+        >
+        <TextView android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:text="记账提醒"
+            android:gravity="center_vertical|left"/>
+        <com.suke.widget.SwitchButton
+            android:id="@+id/switch_button"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/inner_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/noting_time_selector"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
+
+            android:background="@color/littlewhiteback">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="提醒时间" />
+
+            <TextView
+                android:id="@+id/noting_current_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginRight="20dp"
+                android:text="21:00"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginRight="10dp"
+                android:text="&#xf105;"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/littlewhiteback">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="提醒内容:" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@color/littlewhiteback"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/noting_text"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:paddingLeft="10dp"
+                android:background="@null"
+                android:paddingTop="10dp"
+                android:gravity="top"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:hint="松下问童子,文体两开花"/>
+            <TextView android:id="@+id/textSize"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="right"
+                android:textColor="@color/deepgrey"
+                android:text="(0/50)"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
