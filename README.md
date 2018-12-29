@@ -1,2 +1,2 @@
 # cuckooBill
-![avatar](/login.png)
+![avatar](login.png)
