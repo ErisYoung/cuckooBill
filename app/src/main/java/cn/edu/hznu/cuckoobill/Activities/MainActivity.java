@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Date;
+
+import cn.edu.hznu.cuckoobill.Fragment.PageCard;
+import cn.edu.hznu.cuckoobill.Fragment.PageChart;
+import cn.edu.hznu.cuckoobill.Fragment.PageMain;
+import cn.edu.hznu.cuckoobill.Fragment.PageMine;
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Model.BillItem;
+import cn.edu.hznu.cuckoobill.R;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";

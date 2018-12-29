@@ -5,27 +5,27 @@
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/rootView">
-
-    <ScrollView
-        android:layout_width="match_parent"
+    <TextView android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
-        android:fillViewport="true"
-        android:orientation="vertical">
-        <TextView android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center"
-            android:text="账单图例流水"
-            android:textSize="20sp">
-        </TextView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/underlinegrey"
-            />
+        android:layout_weight="1"
+        android:gravity="center_vertical|center"
+        android:text="账单图例流水"
+        android:textSize="20sp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/underlinegrey"
+        />
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="9"-->
+        <!--android:fillViewport="true"-->
+        <!--android:orientation="vertical">-->
         <LinearLayout android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,6 +134,6 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
 </LinearLayout>

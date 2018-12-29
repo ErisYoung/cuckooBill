@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +16,10 @@ import android.widget.Toast;
 import com.suke.widget.SwitchButton;
 
 import org.litepal.crud.DataSupport;
+
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Model.User;
+import cn.edu.hznu.cuckoobill.R;
 
 public class BillBudgetSetting extends AppCompatActivity {
     private static final String TAG = "BillBudgetSetting";

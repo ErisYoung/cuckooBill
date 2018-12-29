@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Model;
 
 import com.contrarywind.interfaces.IPickerViewData;
 /**

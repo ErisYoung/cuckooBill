@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,6 +30,13 @@ import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.hznu.cuckoobill.Adapter.BillItemForCardAdapter;
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Activities.MainActivity;
+import cn.edu.hznu.cuckoobill.Model.BillItem;
+import cn.edu.hznu.cuckoobill.Model.BillItemForCard;
+import cn.edu.hznu.cuckoobill.Model.ProvinceBean;
+import cn.edu.hznu.cuckoobill.R;
 import mehdi.sakout.fancybuttons.FancyButton;
 
 public class PageCard extends Fragment implements View.OnClickListener {
@@ -66,9 +73,11 @@ public class PageCard extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         CardPage = inflater.inflate(R.layout.page_bill_card, container, false);
-        init();
-        initListener();
-
+        billItemList = DataSupport.where("user_id = ?", MainActivity.getUserLogining()).order("create_date").find(BillItem.class);
+        if(billItemList.size()!=0){
+            init();
+            initListener();
+        }
         return CardPage;
     }
 
@@ -107,7 +116,7 @@ public class PageCard extends Fragment implements View.OnClickListener {
         currentMonth=month;
         currentYear=year;
 
-        page_card_current_payment.setText(currentePayment ? "收入" : "支出");
+        page_card_current_payment.setText(currentePayment ? "当前:收入" : "当前:支出");
         page_card_listName.setText((currentePayment ? "收入" : "支出")+"排行榜");
 
 
@@ -118,7 +127,7 @@ public class PageCard extends Fragment implements View.OnClickListener {
 
     public void setShowInfor() {
         page_card_current_time.setText(currentYear + "年" + currentMonth + "月");
-        page_card_current_payment.setText(currentePayment ? "收入" : "支出");
+        page_card_current_payment.setText(currentePayment ? "当前:收入" : "当前:支出");
         page_card_listName.setText((currentePayment ? "收入" : "支出")+"排行榜");
 
     }
@@ -386,7 +395,7 @@ public class PageCard extends Fragment implements View.OnClickListener {
             case R.id.page_card_change_payment:
                 currentePayment=currentePayment?false:true;
 
-                page_card_current_payment.setText(currentePayment ? "收入" : "支出");
+                page_card_current_payment.setText(currentePayment ? "当前:收入" : "当前:支出");
                 page_card_listName.setText((currentePayment ? "收入" : "支出")+"排行榜");
                 queryPieDate(currentYear+currentMonth);
                 //清除 Recycle

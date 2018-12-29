@@ -44,7 +44,7 @@
                 android:layout_gravity="center|top"
                 android:textColor="@color/smssdk_white"
                 android:textStyle="bold"
-                android:text="-252.70"
+                android:text="0.00"
                 android:textSize="32sp" />
             <TextView
                 android:id="@+id/balance_month"
@@ -78,7 +78,7 @@
                 android:layout_gravity="center|top"
                 android:textColor="@color/smssdk_white"
                 android:textStyle="bold"
-                android:text="-252.70"
+                android:text="0.00"
                 android:textSize="18sp" />
 
             <TextView
@@ -110,7 +110,7 @@
                 android:layout_gravity="center|top"
                 android:textColor="@color/smssdk_white"
                 android:textStyle="bold"
-                android:text="-252.70"
+                android:text="0.00"
                 android:textSize="18sp" />
 
             <TextView

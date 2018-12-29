@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +23,12 @@ import org.litepal.crud.DataSupport;
 
 import java.util.Date;
 
+import cn.edu.hznu.cuckoobill.Activities.BillBudgetSetting;
+import cn.edu.hznu.cuckoobill.Activities.BillNoting;
+import cn.edu.hznu.cuckoobill.Activities.LoginActivity;
+import cn.edu.hznu.cuckoobill.Activities.MainActivity;
+import cn.edu.hznu.cuckoobill.R;
+import cn.edu.hznu.cuckoobill.Model.User;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import mehdi.sakout.fancybuttons.FancyButton;
 
@@ -77,7 +83,7 @@ public class PageMine extends Fragment implements View.OnClickListener{
     }
 
     public void calHomeDays(){
-        User user= DataSupport.select().where("number = ?",MainActivity.getUserLogining()).findFirst(User.class);
+        User user= DataSupport.select().where("number = ?", MainActivity.getUserLogining()).findFirst(User.class);
         nowDate=new Date();
         int days=(int)(nowDate.getTime()-user.getCreate_date().getTime())/(1000*24*3600);
         user_days.setText("欢迎来到CuckooBill的第"+(days+1)+"天");

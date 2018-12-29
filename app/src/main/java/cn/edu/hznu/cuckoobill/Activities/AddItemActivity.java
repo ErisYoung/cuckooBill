@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Activities;
 
 import android.app.Instrumentation;
 import android.content.Context;
@@ -25,6 +25,10 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Model.BillItem;
+import cn.edu.hznu.cuckoobill.R;
 
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -79,6 +83,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private String eating=null;
     private String salary=null;
 
+    private String moneyTypeSelectedStrText;
 
     private static final String TAG = "AddItemActivity";
 
@@ -141,8 +146,9 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             itemCurrentCount=getIntent.getStringExtra("moneyCount");
             itemCurrentPaymentType= itemCurrentCount.startsWith("+");
             bill_note_content.setText(getIntent.getStringExtra("clickedItemNote"));
+            billTypeSelected.setText(moneyTypeSelectedStr);
+            moneyTypeSelectedStr=moneyTypeSelectedStr.substring(2);
 
-//            Toast.makeText(AddItemActivity.this,"payment"+itemCurrentPaymentType+"  moneyType"+moneyTypeSelectedStr,Toast.LENGTH_SHORT).show();
             if(itemCurrentPaymentType){
                 paymentType.check(R.id.incoming);
                 incomeLL.setVisibility(View.VISIBLE);
@@ -194,7 +200,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             MonAndDay=currentTime.substring(4,6)+"月"+currentTime.substring(6)+"日";
             headId=Integer.parseInt(currentTime);
             create_date=new Date(Date.parse(currentTime.substring(4,6)+"/"+currentTime.substring(6)+"/"+currentTime.substring(0,4)));
-            moneyTypeSelectedStr = eating;
+            moneyTypeSelectedStrText=eating;
+            moneyTypeSelectedStr = moneyTypeSelectedStrText.substring(2);
         }
         //新增当日的一条Item
         else {
@@ -202,12 +209,14 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             moneyTypeIncome.check(R.id.income_salary);
             moneyTypeSpend.check(R.id.spending_eating);
             parseDateToMonAndDay(create_date);
-            moneyTypeSelectedStr = eating;
+
+            moneyTypeSelectedStrText=eating;
+            moneyTypeSelectedStr = moneyTypeSelectedStrText.substring(2);
+
         }
 
 
         bill_data.setText(MonAndDay);
-        billTypeSelected.setText(moneyTypeSelectedStr);
         //控制软键盘
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 //        inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_NOT_ALWAYS,0);
@@ -247,6 +256,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         cancle.setOnClickListener(this);
         saveItem.setOnClickListener(this);
 
+        billCount.addTextChangedListener(new EditChangedForBListener());
         billCount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -431,7 +441,6 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             money = Double.parseDouble(billCount.getText().toString());
         }
 
-//        Log.d(TAG, "commitItem: "+moneyTypeSelectedStr);
 
         String user_id = MainActivity.getUserLogining();
         note_content = bill_note_content.getText().toString();
@@ -507,8 +516,34 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(getApplicationContext(), " 不要超过50个字哦！", Toast.LENGTH_LONG).show();
                 s.delete(editStart - 1, editEnd);
                 int tempSelection = editStart;
-                bill_note_content.setText((itemCurrentPaymentType?"+":"-")+s);
+                bill_note_content.setText(s);
                 bill_note_content.setSelection(tempSelection);
+            }
+        }
+    }
+    class EditChangedForBListener implements TextWatcher {
+        private CharSequence temp;//监听前的文本
+        private int editStart;//光标开始位置
+        private int editEnd;//光标结束位置
+        private final int charMaxNum = 5;
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            temp = s;
+        }
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) { }
+        @Override
+        public void afterTextChanged(Editable s) {
+            /** 得到光标开始和结束位置 ,超过最大数后记录刚超出的数字索引进行控制 */
+            editStart = billCount.getSelectionStart();
+            editEnd = billCount.getSelectionEnd();
+            if (temp.length() > charMaxNum) {
+                Toast.makeText(getApplicationContext(), " 不要超过5位哦！", Toast.LENGTH_LONG).show();
+                s.delete(editStart - 1, editEnd);
+                int tempSelection = editStart;
+                billCount.setText(s);
+                billCount.setSelection(tempSelection);
             }
         }
     }

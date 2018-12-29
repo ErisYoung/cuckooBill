@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +22,9 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Model.User;
+import cn.edu.hznu.cuckoobill.R;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -41,8 +44,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         SharedPreferences pref=getSharedPreferences("User",MODE_PRIVATE);
         boolean isLogin=pref.getBoolean("isLogin",false);
-
-        Log.d(TAG, "onCreate: "+isLogin);
 
         if(isLogin){
             startActivity(new Intent(LoginActivity.this,MainActivity.class));

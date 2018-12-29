@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -15,6 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import cn.edu.hznu.cuckoobill.Model.BillItemShow;
+import cn.edu.hznu.cuckoobill.R;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 
@@ -53,35 +55,38 @@ public class BillItemAdapter extends BaseAdapter implements StickyListHeadersAda
     }
 
     public void initHeadIndex(){
-        int lastHeader=list.get(0).getHeadId();
-        listHead.add(lastHeader);
-        for (int i = 0; i <list.size(); i++) {
-            int nowHead=list.get(i).getHeadId();
-            if(!(lastHeader==nowHead)){
-                listHead.add(nowHead);
-                lastHeader=nowHead;
-            }
-        }
-        BillItemShow item=null;
-        int income=0;
-        int spend=0;
-        for (int i = 0; i <listHead.size(); i++) {
-            income=0;
-            spend=0;
-            for (int j = 0; j <list.size(); j++) {
-                item=list.get(j);
-                if(item.getHeadId()==listHead.get(i)){
-                    if(item.isPayment_type()){
-                        income+=item.getMoney();
-                    }
-                    else {
-                        spend+=item.getMoney();
-                    }
+        if(list.size()!=0){
+            int lastHeader=list.get(0).getHeadId();
+            listHead.add(lastHeader);
+            for (int i = 0; i <list.size(); i++) {
+                int nowHead=list.get(i).getHeadId();
+                if(!(lastHeader==nowHead)){
+                    listHead.add(nowHead);
+                    lastHeader=nowHead;
                 }
             }
-            listHeadIncome.add(income);
-            listHeadSpend.add(spend);
+            BillItemShow item=null;
+            int income=0;
+            int spend=0;
+            for (int i = 0; i <listHead.size(); i++) {
+                income=0;
+                spend=0;
+                for (int j = 0; j <list.size(); j++) {
+                    item=list.get(j);
+                    if(item.getHeadId()==listHead.get(i)){
+                        if(item.isPayment_type()){
+                            income+=item.getMoney();
+                        }
+                        else {
+                            spend+=item.getMoney();
+                        }
+                    }
+                }
+                listHeadIncome.add(income);
+                listHeadSpend.add(spend);
+            }
         }
+
     }
 
     @Override
@@ -91,7 +96,11 @@ public class BillItemAdapter extends BaseAdapter implements StickyListHeadersAda
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        if(list.size()!=0){
+            return list.get(position);
+        }
+        return null;
+
     }
 
     @Override

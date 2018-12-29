@@ -1,6 +1,5 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Fragment;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -25,14 +23,19 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import cn.edu.hznu.cuckoobill.Adapter.BillItemForChartAdapter;
+import cn.edu.hznu.cuckoobill.Adapter.ChartListAdapter;
+import cn.edu.hznu.cuckoobill.Helper.AllMoneyTypeComprator;
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Activities.MainActivity;
+import cn.edu.hznu.cuckoobill.Model.BillItem;
+import cn.edu.hznu.cuckoobill.Model.BillItemForChart;
+import cn.edu.hznu.cuckoobill.Model.CountAndMoney;
+import cn.edu.hznu.cuckoobill.R;
+
 
 public class PageChart extends Fragment implements View.OnClickListener{
     private static final String TAG = "PageChart";
-
-    public static final String FONTS_DIR = "fonts/";
-    public static final String DEF_FONT = FONTS_DIR + "fa-solid-900.ttf";
-
-    private Typeface tf;
 
     private View ChartPage;
 
@@ -46,22 +49,20 @@ public class PageChart extends Fragment implements View.OnClickListener{
 
     private RecyclerView listBar;
 
+    private RecyclerView listView;
+
     private List<BillItem> billItems=new ArrayList<>();
     private List<BillItemForChart> billItemForChartList=new ArrayList<>();
     private List<BillItem> billItemsTemp=new ArrayList<>();
+    private List<CountAndMoney> countAndMoneyList=new ArrayList<>();
     private BillItemForChart billItemForChart;
+    private ChartListAdapter chartListAdapter;
     private String MonAndYear;
 
     private BillItemForChartAdapter billItemForChartAdapter;
 
-//    private LayoutInflater inflater;
-
-    private LinearLayout listLayout;
-    private LinearLayout tempLayout;
-
-    private TextView listMonetType,listItemCount,listMoneyPercent,listMoneyChangeBar,listPageChartListMoneyAll,listPageChartListMip;
-
-    private LinearLayoutManager linearLayoutManager;
+    private LinearLayoutManager linearLayoutManager1;
+    private LinearLayoutManager linearLayoutManager2;
 
     //初始化 当前选中的item， 默认支出 月份类别
     private int currentPosition=0;
@@ -74,28 +75,28 @@ public class PageChart extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ChartPage=inflater.inflate(R.layout.page_bill_chart,container,false);
-        init();
-        initListener();
 
-        linearLayoutManager=new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        listBar.setLayoutManager(linearLayoutManager);
-        billItemForChartAdapter=new BillItemForChartAdapter(billItemForChartList);
-        listBar.setAdapter(billItemForChartAdapter);
+        billItems=DataSupport.select().where("user_id = ?", MainActivity.getUserLogining()).order("create_date").find(BillItem.class);
 
-        billItemForChartAdapter.setOnItemClickListener(new BillItemForChartAdapter.OnItemClickListen() {
-            @Override
-            public void onItemClick(View view, int position) {
-                currentPosition=position;
-                excuteForSetDateAndChange();
+        if(billItems.size()!=0){
+            init();
 
-            }
-        });
+            linearLayoutManager1=new LinearLayoutManager(getActivity());
+            linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
+            listBar.setLayoutManager(linearLayoutManager1);
+            billItemForChartAdapter=new BillItemForChartAdapter(billItemForChartList);
+            listBar.setAdapter(billItemForChartAdapter);
+
+            initListener();
+        }
+
 
         return ChartPage;
     }
     //改变页面数据
     public void  changeListByPosition(int currentPosition){
+        countAndMoneyList.clear();
+
         BillItemForChart billItemForChart=null;
         if(currentDateType==2){
             billItemForChart=billItemForChartList.get(currentPosition);
@@ -107,83 +108,25 @@ public class PageChart extends Fragment implements View.OnClickListener{
         String payment=billItemForChart.getpaymentType()?"收入":"支出";
         setInfor(billItemForChart,month,payment);
         // 插入 排行榜
-        listLayout.removeAllViews();
 
         CountAndMoney[] arr=new CountAndMoney[4];
         arr[0]=billItemForChart.getMoneyTypeOne();
         arr[1]=billItemForChart.getMoneyTypeTwo();
         arr[2]=billItemForChart.getMoneyTypethr();
         arr[3]=billItemForChart.getMoneyTypeFor();
+        //降序排序
         Arrays.sort(arr,new AllMoneyTypeComprator());
 
-        LayoutInflater inflater=LayoutInflater.from(getActivity());
-
-        for (int i = 0; i <4; i++) {
-            if(arr[i].getMoney()==0){
-                continue;
-            }
-            tempLayout=(LinearLayout)inflater.inflate(R.layout.page_chart_list_tem,listLayout,false);
-
-            //动态设置每列样式
-            listPageChartListMip=(TextView)tempLayout.findViewById(R.id.page_chart_list_mip);
-            listMonetType=(TextView)tempLayout.findViewById(R.id.moneyType);
-            listItemCount=(TextView)tempLayout.findViewById(R.id.itemCount);
-            listMoneyPercent=(TextView)tempLayout.findViewById(R.id.moneyPercent);
-            listMoneyChangeBar=(TextView)tempLayout.findViewById(R.id.moneyChangeBar);
-            listPageChartListMoneyAll=(TextView)tempLayout.findViewById(R.id.page_chart_list_moneyAll);
-
-            listPageChartListMip.setTypeface(tf);
-            listPageChartListMip.setText(fromMoneyTypeToMip(arr[i].getMoneyType()));
-            listMonetType.setText(arr[i].getMoneyType());
-            listItemCount.setText(arr[i].getCount()+"笔");
-            listMoneyPercent.setText(String.format("%.2f%%",arr[i].getMoney()/billItemForChart.getMoneyAll()*100));
-            listPageChartListMoneyAll.setText(arr[i].getMoney()+"");
-            //设置进度条相对宽度
-            LinearLayout.LayoutParams lp=(LinearLayout.LayoutParams)listMoneyChangeBar.getLayoutParams();
-            lp.width=(int)(arr[i].getMoney()/billItemForChart.getMoneyAll()*300);
-            listMoneyChangeBar.setLayoutParams(lp);
-            listLayout.addView(tempLayout,-1);
+        for (int i = 0; i < 4; i++) {
+            countAndMoneyList.add(arr[i]);
         }
-    }
 
-    public String fromMoneyTypeToMip(String a){
-        String mip=null;
-        if(!currentPayment){
-            switch (a){
-                case "吃喝":
-                    mip=getActivity().getString(R.string.eating_mip);
-                    break;
-                case "娱乐":
-                    mip=getActivity().getString(R.string.play_mip);
-                    break;
-                case "购物":
-                    mip=getActivity().getString(R.string.shop_mip);
-                    break;
-                case "杂项":
-                    mip=getActivity().getString(R.string.otherSpend_mip);
-                    break;
-                default:
-                    break;
-            }
-        }else {
-            switch (a){
-                case "工资":
-                    mip=getActivity().getString(R.string.salary_mip);
-                    break;
-                case "红包":
-                    mip=getActivity().getString(R.string.redMoney_mip);
-                    break;
-                case "理财":
-                    mip=getActivity().getString(R.string.finance_mip);
-                    break;
-                case "其他":
-                    mip=getActivity().getString(R.string.otherIncome_mip);
-                    break;
-                default:
-                    break;
-            }
-        }
-        return mip;
+        linearLayoutManager2=new LinearLayoutManager(getActivity());
+        linearLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL);
+        listView.setLayoutManager(linearLayoutManager2);
+        chartListAdapter=new ChartListAdapter(getActivity(),countAndMoneyList,billItemForChart.getMoneyAll(),currentPayment);
+        listView.setAdapter(chartListAdapter);
+
     }
 
     //设置上方总体收支
@@ -215,18 +158,19 @@ public class PageChart extends Fragment implements View.OnClickListener{
         total_count=(TextView)ChartPage.findViewById(R.id.total_count);
         total_max=(TextView)ChartPage.findViewById(R.id.total_max);
         listBar=(RecyclerView)ChartPage.findViewById(R.id.listBar);
-        listLayout=(LinearLayout)ChartPage.findViewById(R.id.chart_page_list);
+        listView=(RecyclerView)ChartPage.findViewById(R.id.recycleView);
 
         chart_page_payment.check(R.id.spending);
         chart_page_date_bar.check(R.id.chart_date_month);
 
-        tf=Typeface.createFromAsset(getActivity().getAssets(),DEF_FONT);
 
         FontHelper.injectFont(ChartPage.findViewById(R.id.rootView));
 
-        defaultPageChartList();
-        changeListByPosition(currentPosition);
-
+        billItems=DataSupport.select().where("user_id = ?",MainActivity.getUserLogining()).order("create_date").find(BillItem.class);
+        if(billItems.size()!=0){
+            defaultPageChartList();
+            changeListByPosition(currentPosition);
+        }
     }
     // 月份类型数据初始化
     public void defaultPageChartList(){
@@ -237,27 +181,38 @@ public class PageChart extends Fragment implements View.OnClickListener{
         billItemForChartList.clear();
         billItems=DataSupport.select().where("user_id = ?",MainActivity.getUserLogining()).order("create_date").find(BillItem.class);
         BillItem b=billItems.get(billItems.size()-1);
+
         Date newDate=b.getCreate_date();
         int months= (int) ((newDate.getTime()-MainActivity.getLoginDate().getTime())/(1000*3600*24)/30);
+
         MonAndYear=parseHeadIdToMonandYear(b.getHead_id());
 
         billItemsTemp.add(b);
-        for (int i = billItems.size()-2; i >=0 ; i--) {
-            b=billItems.get(i);
-            if(parseHeadIdToMonandYear(b.getHead_id()).equals(MonAndYear)){
-                billItemsTemp.add(b);
-                if(i==0){
+        if(billItems.size()>1){
+            for (int i = billItems.size()-2; i >=0 ; i--) {
+                b=billItems.get(i);
+                if(parseHeadIdToMonandYear(b.getHead_id()).equals(MonAndYear)){
+                    billItemsTemp.add(b);
+                    if(i==0){
+                        billItemForChart=new BillItemForChart(billItemsTemp,currentPayment,Integer.parseInt(MonAndYear));
+                        billItemForChartList.add(billItemForChart);
+                    }
+                }
+                else {
                     billItemForChart=new BillItemForChart(billItemsTemp,currentPayment,Integer.parseInt(MonAndYear));
                     billItemForChartList.add(billItemForChart);
+                    billItemsTemp.clear();
+                    MonAndYear=parseHeadIdToMonandYear(b.getHead_id());
                 }
             }
-            else {
-                billItemForChart=new BillItemForChart(billItemsTemp,currentPayment,Integer.parseInt(MonAndYear));
-                billItemForChartList.add(billItemForChart);
-                billItemsTemp.clear();
-                MonAndYear=parseHeadIdToMonandYear(b.getHead_id());
-            }
         }
+        else {
+            billItemForChart=new BillItemForChart(billItemsTemp,currentPayment,Integer.parseInt(MonAndYear));
+            billItemForChartList.add(billItemForChart);
+            billItemsTemp.clear();
+        }
+
+
     }
     // 全部数据初始化
     public void allPageChartList(){
@@ -292,16 +247,27 @@ public class PageChart extends Fragment implements View.OnClickListener{
     }
     public void initListener(){
 
+        billItemForChartAdapter.setOnItemClickListener(new BillItemForChartAdapter.OnItemClickListen() {
+            @Override
+            public void onItemClick(View view, int position) {
+                currentPosition=position;
+                excuteForSetDateAndChange();
+
+            }
+        });
+
         chart_page_payment.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId==R.id.spending){
                   currentPayment=false;
+                    total_list_inst.setText("支出排行榜");
                 excuteForSetDateAndChange();
 
                 }
                 else if(checkedId==R.id.incoming){
                     currentPayment=true;
+                    total_list_inst.setText("收入排行榜");
                     excuteForSetDateAndChange();
                 }
             }
@@ -315,11 +281,13 @@ public class PageChart extends Fragment implements View.OnClickListener{
                     defaultPageChartList();
                     changeListByPosition(currentPosition);
                     billItemForChartAdapter.notifyDataSetChanged();
+                    chartListAdapter.notifyDataSetChanged();
                 }else if(checkedId==R.id.chart_date_all){
                     currentDateType=3;
                     allPageChartList();
                     changeListByPosition(currentPosition);
                     billItemForChartAdapter.notifyDataSetChanged();
+                    chartListAdapter.notifyDataSetChanged();
                 }
             }
         });

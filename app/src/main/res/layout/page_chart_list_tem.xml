@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="60dp">
 
     <TextView android:id="@+id/page_chart_list_mip"
         android:layout_height="match_parent"
@@ -16,8 +16,8 @@
      android:layout_height="match_parent"
      android:layout_width="0dp"
      android:layout_weight="9"
-     android:orientation="vertical"
-     >
+     android:orientation="vertical">
+
      <LinearLayout android:layout_width="match_parent"
          android:layout_height="0dp"
          android:layout_weight="1"

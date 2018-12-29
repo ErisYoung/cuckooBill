@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
+import cn.edu.hznu.cuckoobill.Model.BillItem;
+import cn.edu.hznu.cuckoobill.R;
 
 public class BillItemForCardAdapter extends RecyclerView.Adapter<BillItemForCardAdapter.ViewHolder> {
     private List<BillItem> billItemList;

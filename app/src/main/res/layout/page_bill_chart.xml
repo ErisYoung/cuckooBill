@@ -1,82 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rootView"
-        android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/tool_bar"
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.7">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <RadioGroup
-                android:id="@+id/chart_page_payment"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/spending"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:button="@null"
-                    android:textSize="18sp"
-                    android:background="@drawable/radio_button_underline"
-                    android:text="支出" />
-
-                <RadioButton
-                    android:id="@+id/incoming"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:button="@null"
-                    android:background="@drawable/radio_button_underline"
-                    android:textSize="18sp"
-                    android:text="收入" />
-
-            </RadioGroup>
-            <TextView
-                android:id="@+id/show_calendar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/underlinegrey"/>
-
-    <ScrollView
+        android:id="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="0.7">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <RadioGroup
+            android:id="@+id/chart_page_payment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/spending"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_underline"
+                android:button="@null"
+                android:gravity="center"
+                android:text="支出"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/incoming"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_underline"
+                android:button="@null"
+                android:gravity="center"
+                android:text="收入"
+                android:textSize="18sp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/show_calendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/underlinegrey" />
+
+    <LinearLayout
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
         android:layout_weight="8"
-        android:layout_marginTop="20dp"
         android:fillViewport="true"
         android:orientation="vertical">
-        <LinearLayout android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <LinearLayout android:layout_width="match_parent"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/date_bar"
-                    android:layout_height="10dp"
                     android:layout_width="match_parent"
+                    android:layout_height="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="0.7">
@@ -92,27 +100,27 @@
                             android:id="@+id/chart_date_month"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center|center_vertical"
                             android:layout_weight="1"
+                            android:background="@drawable/radio_button"
                             android:button="@null"
                             android:gravity="center_vertical|center"
-                            android:layout_gravity="center|center_vertical"
-                            android:textSize="15sp"
-                            android:background="@drawable/radio_button"
+                            android:text="月"
                             android:textColor="@drawable/radio_button_color"
-                            android:text="月" />
+                            android:textSize="15sp" />
 
                         <RadioButton
                             android:id="@+id/chart_date_all"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center|center_vertical"
                             android:layout_weight="1"
+                            android:background="@drawable/radio_button"
                             android:button="@null"
                             android:gravity="center_vertical|center"
-                            android:layout_gravity="center|center_vertical"
-                            android:textSize="15sp"
-                            android:background="@drawable/radio_button"
+                            android:text="总"
                             android:textColor="@drawable/radio_button_color"
-                            android:text="总" />
+                            android:textSize="15sp" />
 
                     </RadioGroup>
 
@@ -120,41 +128,45 @@
 
                 <LinearLayout
                     android:id="@+id/chart_page_main"
-                    android:layout_height="0dp"
                     android:layout_width="match_parent"
-                    android:layout_weight="5"
+                    android:layout_height="0dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:layout_weight="5"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:id="@+id/total_layout"
-                        android:layout_height="0dp"
                         android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="3.2"
                         android:orientation="vertical">
 
-                        <TextView android:id="@+id/total_spend_inst"
+                        <TextView
+                            android:id="@+id/total_spend_inst"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1.2"
                             android:layout_marginTop="10dp"
-                            android:text="12/17-12/10, 支出总额"
-                            />
-                        <TextView android:id="@+id/total_spend_number"
+                            android:layout_weight="1.2"
+                            android:text="12/17-12/10, 支出总额" />
+
+                        <TextView
+                            android:id="@+id/total_spend_number"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="10dp"
                             android:layout_weight="5"
                             android:gravity="center|center"
-                            android:layout_marginTop="10dp"
-                            android:text="337.00元"
+                            android:text="0.00元"
                             android:textSize="32sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/total_count_max_layout"
-                        android:layout_height="0dp"
                         android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1.8">
+
                         <FrameLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -171,12 +183,13 @@
                                 android:id="@+id/total_count"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="7dp"
                                 android:layout_gravity="bottom|center"
-                                android:textSize="16sp"
-                                android:text="8笔" />
+                                android:layout_marginBottom="7dp"
+                                android:text="0笔"
+                                android:textSize="16sp" />
 
                         </FrameLayout>
+
                         <FrameLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -193,9 +206,9 @@
                                 android:id="@+id/total_max"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="7dp"
                                 android:layout_gravity="bottom|center"
-                                android:text="225.00元" />
+                                android:layout_marginBottom="7dp"
+                                android:text="0.00元" />
                         </FrameLayout>
 
                     </LinearLayout>
@@ -203,45 +216,47 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.7"
                 android:orientation="vertical">
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/listBar"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="@color/white"
-                    android:layout_weight="4" />
-                <TextView android:id="@+id/total_list_inst"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="4"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/total_list_inst"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:text="支出排行榜"
                     android:background="@color/colorGrey"
-                    />
-                <LinearLayout
-                    android:id="@+id/chart_page_list"
-                    android:layout_weight="3"
-                    android:layout_height="0dp"
-                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="支出排行榜" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycleView"
+                    android:layout_weight="2.5"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:orientation="vertical">
-
-
-                </LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
 
             </LinearLayout>
+
         </LinearLayout>
 
-    </ScrollView>
 
     </LinearLayout>
+
+</LinearLayout>
 
 
 

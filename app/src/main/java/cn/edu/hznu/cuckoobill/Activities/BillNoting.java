@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +23,12 @@ import com.suke.widget.SwitchButton;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Model.ProvinceBean;
+import cn.edu.hznu.cuckoobill.Model.User;
+import cn.edu.hznu.cuckoobill.R;
+import cn.edu.hznu.cuckoobill.Service.NotingServer;
 
 public class BillNoting extends AppCompatActivity {
 

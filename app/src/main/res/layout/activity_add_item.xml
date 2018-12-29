@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/rootView"
-    tools:context=".AddItemActivity">
+    tools:context=".Activities.AddItemActivity">
 
     <LinearLayout
         android:id="@+id/tool_bar"
@@ -102,6 +102,9 @@
 
         <EditText
             android:id="@+id/bill_amount"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/test_cursor"
+            android:focusedByDefault="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"

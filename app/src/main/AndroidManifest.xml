@@ -20,24 +20,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.LoginActivity">
 
              <intent-filter>
              <action android:name="android.intent.action.MAIN" />
              <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
         </activity>
-        <activity android:name=".AddItemActivity">
+        <activity android:name=".Activities.AddItemActivity">
 
         </activity>
-        <activity android:name=".ChangeItem" />
-        <activity android:name=".BillNoting" />
-        <activity android:name=".BillBudgetSetting" />
+        <activity android:name=".Activities.ChangeItem" />
+        <activity android:name=".Activities.BillNoting" />
+        <activity android:name=".Activities.BillBudgetSetting" />
 
         <service
-            android:name=".NotingServer"
+            android:name=".Service.NotingServer"
             android:enabled="true"
             android:exported="true">
 

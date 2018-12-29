@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/rootView"
     android:background="#f0f1f1"
-    tools:context=".ChangeItem">
+    tools:context=".Activities.ChangeItem">
 
     <LinearLayout android:id="@+id/change_item_toolbar"
         style="@style/page_content_horizontal"
@@ -149,9 +149,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5"
+        android:background="@drawable/edit_press"
+        android:text="编辑"
         android:textColor="@color/selectedRed"
-        android:textSize="18sp"
-        android:background="@drawable/underline"
-        android:text="编辑"/>
+        android:textSize="18sp" />
 
 </LinearLayout>

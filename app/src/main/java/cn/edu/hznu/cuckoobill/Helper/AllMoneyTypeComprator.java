@@ -1,6 +1,8 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Helper;
 
 import java.util.Comparator;
+
+import cn.edu.hznu.cuckoobill.Model.CountAndMoney;
 
 public class AllMoneyTypeComprator implements Comparator {
 

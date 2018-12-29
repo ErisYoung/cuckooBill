@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Model;
 
 public class CountAndMoney {
     private int count=0;

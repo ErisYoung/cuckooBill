@@ -1,7 +1,6 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Model;
 
 import java.util.Date;
-import java.util.List;
 
 public class BillItemShow {
 

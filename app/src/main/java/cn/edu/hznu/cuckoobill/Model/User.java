@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Model;
 
 import org.litepal.crud.DataSupport;
 

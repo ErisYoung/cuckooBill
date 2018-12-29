@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/rootView"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <FrameLayout
         android:id="@+id/frame_content"
@@ -85,7 +85,6 @@
                 android:background="@mipmap/add_item"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-
 
                 />
             </FrameLayout>

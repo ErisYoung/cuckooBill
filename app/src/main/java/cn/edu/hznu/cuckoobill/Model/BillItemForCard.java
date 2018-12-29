@@ -1,6 +1,7 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Model;
 
 import java.util.List;
+
 // 对于某年某月的收入支出类
 public class BillItemForCard {
     private int year;

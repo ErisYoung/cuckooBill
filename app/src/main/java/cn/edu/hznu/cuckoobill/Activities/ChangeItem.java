@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.litepal.crud.DataSupport;
+
+import cn.edu.hznu.cuckoobill.Helper.FontHelper;
+import cn.edu.hznu.cuckoobill.Model.BillItem;
+import cn.edu.hznu.cuckoobill.R;
 
 public class ChangeItem extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "ChangeItem";
@@ -78,6 +82,14 @@ public class ChangeItem extends AppCompatActivity implements View.OnClickListene
                 this.finish();
                 break;
             case R.id.change_item_delete:
+
+//                SharedPreferences.Editor editor=getSharedPreferences("User",MODE_PRIVATE).edit();
+//                editor.putBoolean("isDelete",true);
+//                editor.apply();
+
+//                SharedPreferences pref=getSharedPreferences("User",MODE_PRIVATE);
+//                Log.d(TAG, "onClick: "+pref.getBoolean("isDelete",false));
+
                 DataSupport.delete(BillItem.class,Integer.parseInt(clickedItemId));
                 this.finish();
                 break;

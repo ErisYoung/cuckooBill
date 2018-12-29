@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -16,6 +16,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import cn.edu.hznu.cuckoobill.Activities.AddItemActivity;
+import cn.edu.hznu.cuckoobill.R;
 
 public class NotingServer extends Service {
     private static final String TAG = "NotingServer";

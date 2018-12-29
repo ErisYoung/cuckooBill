@@ -1,4 +1,4 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.edu.hznu.cuckoobill.Model.BillItemForChart;
+import cn.edu.hznu.cuckoobill.R;
 
 public class BillItemForChartAdapter extends RecyclerView.Adapter<BillItemForChartAdapter.ViewHolder> {
     private static final String TAG = "BillItemForChartAdapter";

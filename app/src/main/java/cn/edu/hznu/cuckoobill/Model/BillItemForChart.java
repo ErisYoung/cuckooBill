@@ -1,8 +1,6 @@
-package cn.edu.hznu.cuckoobill;
+package cn.edu.hznu.cuckoobill.Model;
 
 import java.util.List;
-
-import cn.edu.hznu.cuckoobill.BillItem;
 
 public class BillItemForChart {
     private List<BillItem> list;
