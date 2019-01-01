@@ -323,10 +323,7 @@ public class PageCard extends Fragment implements View.OnClickListener {
         for (int i = 1; i < datelist.size(); i++) {
             year = datelist.get(i).substring(0, 4);
             month = datelist.get(i).substring(4, 6);
-            ArrayList<String> test=date.get(count);
-            int k=date.get(count).size();
-            int v=date.size();
-            if (test.contains(year)) {
+            if (date.get(count).contains(year)) {
                 date.get(count).add(month);
             } else {
                 count++;
@@ -345,8 +342,6 @@ public class PageCard extends Fragment implements View.OnClickListener {
             }
             options2Items.add(a);
         }
-        Log.d(TAG, "initSelectorDate: "+options1Items+options2Items);
-        Log.d(TAG, "initSelectorDate: ssss");
 
     }
 
