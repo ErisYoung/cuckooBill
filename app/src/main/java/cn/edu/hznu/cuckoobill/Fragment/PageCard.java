@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -310,7 +311,7 @@ public class PageCard extends Fragment implements View.OnClickListener {
                 datelist.add(str);
             }
         }
-
+        Log.d(TAG, "initSelectorDate: "+datelist);
         ArrayList<ArrayList<String>> date = new ArrayList<>();
         int count = 0;
         String year = datelist.get(0).substring(0, 4);
@@ -322,23 +323,30 @@ public class PageCard extends Fragment implements View.OnClickListener {
         for (int i = 1; i < datelist.size(); i++) {
             year = datelist.get(i).substring(0, 4);
             month = datelist.get(i).substring(4, 6);
-            if (date.get(count).contains(year)) {
+            ArrayList<String> test=date.get(count);
+            int k=date.get(count).size();
+            int v=date.size();
+            if (test.contains(year)) {
                 date.get(count).add(month);
             } else {
                 count++;
-                dateinner.add(year);
-                dateinner.add(month);
-                date.add(dateinner);
+                ArrayList<String> test2=new ArrayList<>();
+                test2.add(year);
+                test2.add(month);
+                date.add(count,test2);
             }
         }
+
         for (int i = 0; i < date.size(); i++) {
             options1Items.add(new ProvinceBean(i, date.get(i).get(0), "des", "c"));
             ArrayList<String> a = new ArrayList<>();
-            for (int j = 1; j < date.get(i).size() - 1; j++) {
+            for (int j = 1; j < date.get(i).size(); j++) {
                 a.add(date.get(i).get(j));
             }
             options2Items.add(a);
         }
+        Log.d(TAG, "initSelectorDate: "+options1Items+options2Items);
+        Log.d(TAG, "initSelectorDate: ssss");
 
     }
 
