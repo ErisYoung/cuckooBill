@@ -53,7 +53,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         FontHelper.injectFont(findViewById(R.id.rootView));
 
-
+//        init();
 //        User user=new User();
 //        user.setNumber(UserLogining);
 //        user.setBudget(0);
@@ -70,7 +70,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     public void init(){
-        String month="07";
+        String month="12";
         String a="吃喝";
         String b="娱乐";
         String c="工资";

@@ -37,8 +37,8 @@ public class BillItemAdapter extends BaseAdapter implements StickyListHeadersAda
 
     private List<BillItemShow> list;
     private List<Integer> listHead=new ArrayList<>();
-    private List<Integer> listHeadIncome=new ArrayList<>();
-    private List<Integer> listHeadSpend=new ArrayList<>();
+    private List<Double> listHeadIncome=new ArrayList<>();
+    private List<Double> listHeadSpend=new ArrayList<>();
 
     private LayoutInflater inflater;
 
@@ -66,8 +66,8 @@ public class BillItemAdapter extends BaseAdapter implements StickyListHeadersAda
                 }
             }
             BillItemShow item=null;
-            int income=0;
-            int spend=0;
+            double income=0;
+            double spend=0;
             for (int i = 0; i <listHead.size(); i++) {
                 income=0;
                 spend=0;

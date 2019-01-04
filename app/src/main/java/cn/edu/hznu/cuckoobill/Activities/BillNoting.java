@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -112,6 +113,10 @@ public class BillNoting extends AppCompatActivity {
 
                 SharedPreferences.Editor editor=getSharedPreferences("noteDate",MODE_PRIVATE).edit();
                 editor.putBoolean("isNoting",isNoting);
+
+                pref=getSharedPreferences("User",MODE_PRIVATE);
+
+//                Log.d(TAG, "onClick: "+pref.getString("LoginUser","15990184787"));
 
                 User userList= DataSupport.select().where("number = ?",pref.getString("LoginUser","15990184787")).findFirst(User.class);
                 userList.setNotingHour(Integer.parseInt(currentHour));

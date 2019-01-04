@@ -1,6 +1,7 @@
 package cn.edu.hznu.cuckoobill.Activities;
 
 import android.app.Instrumentation;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +24,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -149,11 +153,14 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             billTypeSelected.setText(moneyTypeSelectedStr);
             moneyTypeSelectedStr=moneyTypeSelectedStr.substring(2);
 
+            payment_type=itemCurrentPaymentType;
+            Log.d(TAG, "init: ");
+
             if(itemCurrentPaymentType){
                 paymentType.check(R.id.incoming);
                 incomeLL.setVisibility(View.VISIBLE);
                 spendLL.setVisibility(View.GONE);
-                billCount.setText("+"+itemCurrentCount.substring(1));
+                billCount.setText(itemCurrentCount.substring(1));
                 switch (moneyTypeSelectedStr){
                     case "工资":
                         moneyTypeIncome.check(R.id.income_salary);
@@ -173,7 +180,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 paymentType.check(R.id.spending);
                 incomeLL.setVisibility(View.GONE);
                 spendLL.setVisibility(View.VISIBLE);
-                billCount.setText("-"+itemCurrentCount.substring(1));
+                billCount.setText(itemCurrentCount.substring(1));
+//                billCount.setText("-"+itemCurrentCount.substring(1));
                 switch (moneyTypeSelectedStr){
                     case "吃喝":
                         moneyTypeSpend.check(R.id.spending_eating);
@@ -303,6 +311,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 radioPaymentSelected = (RadioButton) findViewById(paymentType.getCheckedRadioButtonId());
                 paymentTypeFinal = radioPaymentSelected.getText().toString();
+                Log.d(TAG, "onCheckedChanged: "+paymentTypeFinal);
                 payment_type = paymentTypeFinal.equals("收入");
 
                 if (payment_type) {
@@ -311,16 +320,19 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                     moneyTypeIncome.check(R.id.income_salary);
                     moneyTypeSelectedStr = "工资";
                     itemCurrentCount=billCount.getText().toString();
-                    if(itemCurrentCount.startsWith("+")||itemCurrentCount.startsWith("-")){
-                        billCount.setText("+"+itemCurrentCount.substring(1));
+                    if(TextUtils.isEmpty(billCount.getText().toString())){
+                        itemCurrentCount="0.0";
                     }
                     else {
-                        billCount.setText("+"+itemCurrentCount.substring(0));
+                        itemCurrentCount=billCount.getText().toString();
                     }
-                    billCount.setSelection(billCount.getText().toString().length()-1);
+
+                    billCount.setText(itemCurrentCount);
+                    billCount.setSelection(billCount.getText().toString().length());
 
                     //设置默认moneyType
                     billTypeSelected.setText(salary);
+                    Log.d(TAG, "onCheckedChanged: inco "+payment_type);
 
 
                 } else {
@@ -330,16 +342,18 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                     moneyTypeSelectedStr = "吃喝";
                     itemCurrentCount=billCount.getText().toString();
 
-
-                    if(itemCurrentCount.startsWith("-")||itemCurrentCount.startsWith("+")){
-                        billCount.setText("-"+itemCurrentCount.substring(1));
+                    if(TextUtils.isEmpty(billCount.getText().toString())){
+                        itemCurrentCount="0.0";
                     }
                     else {
-                        billCount.setText("-"+itemCurrentCount.substring(0));
+                        itemCurrentCount=billCount.getText().toString();
                     }
-                    billCount.setSelection(billCount.getText().toString().length()-1);
+                    billCount.setText(itemCurrentCount);
 
+                    billCount.setSelection(billCount.getText().toString().length());
+//                    Log.d(TAG, "onCheckedChanged: "+billCount.getText().toString().length());
                     billTypeSelected.setText(eating);
+                    Log.d(TAG, "onCheckedChanged: spend"+payment_type);
 
 
                 }
@@ -402,7 +416,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 performKeyDown(KeyEvent.KEYCODE_9);
                 break;
             case R.id.button_dot:
-                performKeyDown(KeyEvent.KEYCODE_NUMPAD_DOT);
+                performKeyDown(KeyEvent.KEYCODE_PERIOD);
                 break;
             case R.id.button_del:
                 performKeyDown(KeyEvent.KEYCODE_DEL);
@@ -434,31 +448,47 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(AddItemActivity.this,"请输入金额",Toast.LENGTH_SHORT).show();
             return;
         }
-        if(billCountText.startsWith("-")||billCountText.startsWith("+")){
-            money = Double.parseDouble(billCount.getText().toString().substring(1));
-        }
-        else {
-            money = Double.parseDouble(billCount.getText().toString());
-        }
 
+        money = Double.parseDouble(billCount.getText().toString());
 
         String user_id = MainActivity.getUserLogining();
         note_content = bill_note_content.getText().toString();
-        BillItem billItem = new BillItem();
+
 
         if(itemCurrentId!=-1){
+            BillItem billItem = new BillItem();
             String time=getIntent.getStringExtra("clickedItemDate");
             billItem.setHead_id(Integer.parseInt(getIntent.getStringExtra("clickedItemDate")));
             billItem.setMoney(money);
+
             billItem.setNote(note_content);
 //            billItem.setCreate_date(new Date(Date.parse(time.substring(4,6)+"/"+time.substring(6)+"/"+time.substring(0,4))));
             billItem.setMoney_type(moneyTypeSelectedStr);
+//
+//            BillItem t= DataSupport.select().where("id = ?",itemCurrentId+"").findFirst(BillItem.class);
+//            Log.d(TAG, "commitItem: "+t.getMoney()+" "+t.isPayment_type()+"   pay"+payment_type+" "+itemCurrentId);
+            Log.d(TAG, "commitItem: "+payment_type);
+
             billItem.setPayment_type(payment_type);
+            Log.d(TAG, "commitItem: "+billItem.isPayment_type());
+
             billItem.updateAll("id=?",itemCurrentId+"");
+
+            BillItem t1= DataSupport.select().where("id = ?",itemCurrentId+"").findFirst(BillItem.class);
+            Log.d(TAG, "commitItem:2 "+t1.getMoney()+" "+t1.isPayment_type()+itemCurrentId);
+
+            ContentValues values = new ContentValues();
+            values.put("payment_type",payment_type);
+            DataSupport.update(BillItem.class, values, itemCurrentId);
+
+
             itemCurrentId=-1;
+
+
             startActivity(new Intent(AddItemActivity.this,MainActivity.class));
         }
         else {
+            BillItem billItem = new BillItem();
             billItem.setHead_id(headId);
             billItem.setUser_id(user_id);
             billItem.setMoney(money);
@@ -525,7 +555,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         private CharSequence temp;//监听前的文本
         private int editStart;//光标开始位置
         private int editEnd;//光标结束位置
-        private final int charMaxNum = 5;
+        private final int charMaxNum = 6;
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -539,7 +569,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             editStart = billCount.getSelectionStart();
             editEnd = billCount.getSelectionEnd();
             if (temp.length() > charMaxNum) {
-                Toast.makeText(getApplicationContext(), " 不要超过5位哦！", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), " 不要超过6位哦！", Toast.LENGTH_LONG).show();
                 s.delete(editStart - 1, editEnd);
                 int tempSelection = editStart;
                 billCount.setText(s);

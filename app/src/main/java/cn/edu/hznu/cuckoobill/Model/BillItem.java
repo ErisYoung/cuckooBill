@@ -6,6 +6,7 @@ import org.litepal.crud.DataSupport;
 import java.util.Date;
 
 public class BillItem extends DataSupport{
+    private static final String TAG = "BillItem";
     private int id;
 
     private String user_id;
@@ -73,7 +74,7 @@ public class BillItem extends DataSupport{
     }
 
     public void setPayment_type(boolean payment_type) {
-        this.payment_type = payment_type;
+        this.payment_type=payment_type;
     }
 
     public void setUser_id(String user_id) {

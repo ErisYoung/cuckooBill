@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +30,9 @@ import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.hznu.cuckoobill.Activities.MainActivity;
 import cn.edu.hznu.cuckoobill.Adapter.BillItemForCardAdapter;
 import cn.edu.hznu.cuckoobill.Helper.FontHelper;
-import cn.edu.hznu.cuckoobill.Activities.MainActivity;
 import cn.edu.hznu.cuckoobill.Model.BillItem;
 import cn.edu.hznu.cuckoobill.Model.BillItemForCard;
 import cn.edu.hznu.cuckoobill.Model.ProvinceBean;
@@ -311,7 +310,7 @@ public class PageCard extends Fragment implements View.OnClickListener {
                 datelist.add(str);
             }
         }
-        Log.d(TAG, "initSelectorDate: "+datelist);
+//        Log.d(TAG, "initSelectorDate: "+datelist);
         ArrayList<ArrayList<String>> date = new ArrayList<>();
         int count = 0;
         String year = datelist.get(0).substring(0, 4);
