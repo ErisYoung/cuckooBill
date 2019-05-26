@@ -46,64 +46,71 @@ dependencies {
 #### 账单默认页
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqacrduj30eg0pqt9x.jpg" width="160">
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9sjwrj30ev0qfgmw.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqacrduj30eg0pqt9x.jpg" width="240">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9sjwrj30ev0qfgmw.jpg" width="240">
 </p>
 
 注:👌支持滑动Item
 
+---
+
 点击一笔记账，进入详情页面，你可选择修改或者删除该笔记录
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9uckzj30ez0qm0tb.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9uckzj30ez0qm0tb.jpg" width="240">
 </p>
 
 #### 图表页
 按照月份和年份,收支层面来查询账单数据，记录最大收支和总收支
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqb91lpj30ez0qmq3z.jpg" width="160">
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqadyxjj30eq0q7jsd.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqb91lpj30ez0qmq3z.jpg" width="240">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqadyxjj30eq0q7jsd.jpg" width="240">
 </p>
 
 #### 添加新一笔记账
 点击中心加号，添加新一笔记账，可选择不同类型与备注记账信息来源
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9qjj4j30ej0put9h.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9qjj4j30ej0put9h.jpg" width="240">
 </p>
 
 #### 流水页
 扇形图记录每月记账流水，点击扇形图来查看记账详情
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqarsazj30fd0ra0u1.jpg" width="160">
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqamb19j30f60r175r.jpg" width="160">
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqaclapj30f90r6q40.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqarsazj30fd0ra0u1.jpg" width="240">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqamb19j30f60r175r.jpg" width="240">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqaclapj30f90r6q40.jpg" width="240">
 </p>
 
 #### 个人页
 可在个人页设置toolbar通知，预算设置和登出
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqba41zj30fb0rathp.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emqba41zj30fb0rathp.jpg" width="240">
 </p>
 
+---
 点击记账通知打开记账通知开关,选择提醒时间和通知信息
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9qcwhj30f70r10t4.jpg" width="160">
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3enax4q49j30es0q9abm.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9qcwhj30f70r10t4.jpg" width="240">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3enax4q49j30es0q9abm.jpg" width="240">
 </p>
-通知提示
+
+**通知提示**
+
+---
 
 点击预算设置打开预算开关，选择预算数目
 
 <p >
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9qx61j30f50qz3yy.jpg" width="160">
-<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3enax4r0oj30ez0qmmyi.jpg" width="160">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3emq9qx61j30f50qz3yy.jpg" width="240">
+<img src="https://ws3.sinaimg.cn/large/005BYqpggy1g3enax4r0oj30ez0qmmyi.jpg" width="240">
 </p>
-显示预算
+
+**显示预算**
 
         
 
